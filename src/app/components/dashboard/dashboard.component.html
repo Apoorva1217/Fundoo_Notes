@@ -1,0 +1,75 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+  rel="stylesheet">
+<div fxLayout="row">
+  <mat-toolbar class="header">
+    <button mat-icon-button (click)="onToolbarMenuToggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="../../../assets/image/keepIcon.png">
+    <span>Fundoo Note</span>
+    <mat-card class="input-card">
+      <mat-icon>search</mat-icon>
+      <div class="input-feild">
+        <input type="search" placeholder="search">
+      </div>
+    </mat-card>
+    <span class="settings"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div class="userDetail">
+        <div fxLayout="row wrap" fxLayoutAlign="center">
+          <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+        </div>
+        <div>Name: {{name}}</div>
+        <div>Email: {{email}}</div>
+        <div fxLayout="row wrap" fxLayoutAlign="end ">
+          <button mat-stroked-button type="submit" (click)="logout()">logout</button>
+        </div>
+      </div>
+    </mat-menu>
+  </mat-toolbar>
+</div>
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened
+    (mouseenter)="onToolbarMenuToggle()" (mouseleave)="onToolbarMenuToggle()">
+    <mat-list id="menus">
+      <mat-selection-list [multiple]="false">
+        <mat-list-option class="option" routerLink="/dashboard/notes" #note [selected]="note"><button mat-icon-button>
+            <mat-icon class="material-icons-outlined">emoji_objects</mat-icon>
+            Notes
+          </button>
+        </mat-list-option>
+        <mat-list-option class="option" routerLink="/dashboard/reminder"> <button mat-icon-button>
+            <mat-icon class="material-icons-outlined">notifications</mat-icon>
+            Reminder
+          </button>
+        </mat-list-option>
+        <mat-list-option><button mat-icon-button>
+            <mat-icon class="material-icons-outlined">create</mat-icon>
+            Edit lable
+          </button>
+        </mat-list-option>
+        <mat-list-option class="option" *ngFor="let label of label" [routerLink]="['/dashboard/notes',label]"><button
+            mat-icon-button>
+            <mat-icon class="material-icons-outlined">label</mat-icon>
+            {{label}}
+          </button>
+        </mat-list-option>
+        <mat-list-option class="option" routerLink="/dashboard/archive"><button mat-icon-button>
+            <mat-icon class="material-icons-outlined">archive</mat-icon>
+            Archive
+          </button>
+        </mat-list-option>
+        <mat-list-option class="option" routerLink="/dashboard/bin"><button mat-icon-button>
+            <mat-icon class="material-icons-outlined">delete</mat-icon>
+            Trash
+          </button>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-list>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
