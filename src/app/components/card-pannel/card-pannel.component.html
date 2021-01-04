@@ -1,0 +1,48 @@
+<div class="iconPannel">
+    <button mat-icon-button [matMenuTriggerFor]="matMenuReminder">
+        <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="reminder">add_alert</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <app-color-pallet [noteIdcard]="noteId"></app-color-pallet>
+    </button>
+    <button mat-icon-button>
+        <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="delete" (click)="trashNote()">delete
+        </mat-icon>
+    </button>
+
+    <button mat-icon-button>
+        <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="archive" (click)="archiveNote()">
+            archive
+        </mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="material-icons-outlined">more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="below" fxLayout="row" overlapTrigger="false">
+        <div class="lableForm">
+            <form>
+                <div>Lable note</div>
+                <mat-form-field appearance="none" (click)="$event.stopPropagation();">
+                    <input mat-menu-item matInput placeholder="enter lable name" type="text" autocomplete="off"
+                        [formControl]="labelName">
+                    <section class="example-section" *ngFor="let label of labelArray">
+                        <mat-checkbox value="label" (click)="setLabelName(label)">{{label}}</mat-checkbox>
+                    </section>
+                </mat-form-field>
+                <button mat-stroked-button type="submit" (click)="addNoteLable()">add</button>
+            </form>
+        </div>
+    </mat-menu>
+    <mat-menu #matMenuReminder="matMenu">
+        <button mat-menu-item (click)="setReminder('today');setReminderToCard()">
+            <span>Today</span>
+        </button>
+        <button mat-menu-item (click)="setReminder('tomorrow');setReminderToCard()">
+            <span>Tomorrow</span>
+        </button>
+        <button mat-menu-item (click)="setReminder('next');setReminderToCard()">
+            <span>Next week</span>
+        </button>
+    </mat-menu>
+</div>

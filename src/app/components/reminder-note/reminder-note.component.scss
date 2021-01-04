@@ -1,0 +1,19 @@
+.card {
+    max-width: 400px;
+    width: 240px;
+    height: 100px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: black 3px;
+  }
+  .disabled {
+    font-size: 40px;
+    padding-top: 200px;
+    color: gray;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  

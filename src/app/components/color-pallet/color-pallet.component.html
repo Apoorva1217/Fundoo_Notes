@@ -1,0 +1,26 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="color pallet">color_lens</mat-icon>
+</button>
+<mat-menu #menu="matMenu" fxLayout="row">
+    <div fxLayoutAlign="space-around center" class="pallet">
+        <div class="color-one" (click)="getColor('#fff')">
+            <mat-icon>done</mat-icon>
+        </div>
+        <div class="color-two" (click)="getColor('#f28b82')"></div>
+        <div class="color-three" (click)="getColor('#fbbc04')"></div>
+        <div class="color-four" (click)="getColor('#fff475')"></div>
+    </div>
+    <div fxLayoutAlign="space-around center" class="pallet">
+        <div class="color-five" (click)="getColor('#ccff90')"></div>
+        <div class="color-six" (click)="getColor('#a7ffeb')"></div>
+        <div class="color-seven" (click)="getColor('#cbf0f8')"></div>
+        <div class="color-eight" (click)="getColor('#aecbfa')"></div>
+    </div>
+
+    <div fxLayoutAlign="space-around center" class="pallet">
+        <div class="color-nine" (click)="getColor('#d7aefb')"></div>
+        <div class="color-ten" (click)="getColor('#fdcfe8')"></div>
+        <div class="color-eleven" (click)="getColor('#e6c9a8')"></div>
+        <div class="color-twelve" (click)="getColor('#e8eaed')"></div>
+    </div>
+</mat-menu>
