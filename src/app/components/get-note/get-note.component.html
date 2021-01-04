@@ -1,0 +1,121 @@
+<div class="heading" *ngIf="pinnedNote.length>0">Pinned</div>
+<div *ngFor="let note of pinnedNote; let i=index" fxLayoutGap="20px" [ngClass]="type?'grid':'list'">
+  <mat-card class="grid-item" appearance="outline" (mouseenter)="onHover(i)" (mouseleave)="onHover(-1)"
+    [style.background]="note.color">
+    <div>
+      <button mat-icon-button class="pin">
+        <mat-icon (click)="addPin(note.id);pin=!pin" #tooltip="matTooltip" matTooltip="pin">push_pin
+        </mat-icon>
+      </button>
+      <mat-card-content (click)="openDialog(note.title,note.description,note.id)">
+        <mat-card-title>
+          {{note.title}}
+        </mat-card-title>
+        <mat-card-title>
+          <mat-card-content>
+            {{note.description}}
+          </mat-card-content>
+        </mat-card-title>
+      </mat-card-content>
+    </div>
+    <mat-form-field appearance="none">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let lable of note.noteLabels" [removable]="removable" (removed)="removeLable(lable)">
+          {{lable.label}}
+          <mat-icon matChipRemove>Cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-form-field appearance="none">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let reminder of note.reminder" [removable]="removable" (removed)="removeReminder(note.id)">
+          {{reminder}}
+          <mat-icon matChipRemove>Cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-card-content class="iconPannel">
+      <span>
+        <div>
+          <app-card-pannel [noteId]="note.id" *ngIf="!note.isArchived && !note.isDeleted" [labelArray]="label"
+            [noteArray]="note.collaborators" [hidden]="!(hoverIndexPin==i)"></app-card-pannel>
+          <button mat-icon-button>
+            <mat-icon class="material-icons-outlined" *ngIf="i==hoverIndexPin && note.isArchived" #tooltip="matTooltip"
+              matTooltip="unarchive">unarchive</mat-icon>
+          </button>
+          <span *ngIf="i==hoverIndexPin && note.isDeleted" class="pannel">
+            <button mat-icon-button>
+              <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="restore">restore_from_trash
+              </mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="delete forever">delete_forever
+              </mat-icon>
+            </button>
+          </span>
+        </div>
+      </span>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngFor="let note of unPinnedNote; let j=index" fxLayoutGap="20px" [ngClass]="type?'grid':'list'">
+  <mat-card class="grid-item" appearance="outline" (mouseenter)="onHoverPin(j)" (mouseleave)="onHoverPin(-1)"
+    [style.background]="note.color">
+    <div>
+      <button mat-icon-button class="pin">
+        <mat-icon (click)="addPin(note.id);pin=!pin" class="material-icons-outlined" #tooltip="matTooltip"
+          matTooltip="pin">
+          {{note.isPined==true ? 'done': 'push_pin'}}
+        </mat-icon>
+      </button>
+      <mat-card-content (click)="openDialog(note.title,note.description,note.id)">
+        <mat-card-title>
+          {{note.title}}
+        </mat-card-title>
+        <mat-card-title>
+          <mat-card-content>
+            {{note.description}}
+          </mat-card-content>
+        </mat-card-title>
+      </mat-card-content>
+    </div>
+    <mat-form-field appearance="none">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let lable of note.noteLabels" [removable]="removable" (removed)="removeLable(lable)">
+          {{lable.label}}
+          <mat-icon matChipRemove>Cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-form-field appearance="none">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let reminder of note.reminder" [removable]="removable" (removed)="removeReminder(note.id)">
+          {{reminder.substring(0,25)}}
+          <mat-icon matChipRemove>Cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-card-content class="iconPannel">
+      <span>
+        <div>
+          <app-card-pannel [noteId]="note.id" *ngIf="!note.isArchived && !note.isDeleted" [labelArray]="label"
+            [noteArray]="note.collaborators" [hidden]="!(hoverIndexUnPin==j)"></app-card-pannel>
+          <button mat-icon-button>
+            <mat-icon class="material-icons-outlined" *ngIf="j==hoverIndexUnPin && note.isArchived"
+              #tooltip="matTooltip" matTooltip="unarchive" (click)="unArchive(note.id,j)">unarchive</mat-icon>
+          </button>
+          <span *ngIf="j==hoverIndexUnPin && note.isDeleted" class="pannel">
+            <button mat-icon-button>
+              <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="restore">restore_from_trash
+              </mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon class="material-icons-outlined" #tooltip="matTooltip" matTooltip="delete forever">delete_forever
+              </mat-icon>
+            </button>
+          </span>
+        </div>
+      </span>
+    </mat-card-content>
+  </mat-card>
+</div>

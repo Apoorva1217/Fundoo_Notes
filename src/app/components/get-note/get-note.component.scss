@@ -1,0 +1,68 @@
+.container {
+  margin-left: 10%;
+  margin-right: 5%;
+}
+.iconPannel {
+  bottom: 0;
+  height: 40px;
+}
+.grid {
+  display: inline-grid;
+  padding: 10px;
+  margin-left: 10px;
+}
+.list {
+  padding: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.grid-item {
+  max-width: 600px;
+  min-width: 250px;
+  min-height: 190px;
+  display: grid;
+  margin-top: 2%;
+  margin-left: 175px;
+  border-radius: 10px;
+  border: black 3px;
+}
+.disabled {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 200px;
+  color: gray;
+  pointer-events: none;
+  opacity: 0.4;
+}
+.grid-item:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.mat-card-title {
+  font-size: 18px;
+}
+.mat-card-content {
+  font-size: 13px;
+}
+.mat-chip {
+  font-size: 12px;
+}
+.pin {
+  float: right;
+}
+hr {
+  border-top: 3px dotted #bbb;
+}
+.mat-card-content {
+  height: 20px;
+}
+::ng-deep .mat-form-field-infix {
+  padding: 0px;
+}
+::ng-deep .mat-form-field-wrapper {
+  padding: 0;
+}
+.heading {
+  font-size: 20px;
+  color: gray;
+  padding-left: 10px;
+}

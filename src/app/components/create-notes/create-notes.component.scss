@@ -1,0 +1,27 @@
+.back-card .mat-form-field {
+  width: 90%;
+  height: 7px;
+}
+
+.front-card {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 25px;
+  border-radius: 10px;
+}
+.back-card {
+  width: 500px;
+  border-radius: 10px;
+}
+.mat-icon {
+  cursor: pointer;
+}
+
+.settings {
+  flex: 1 1 auto;
+}
+
+.mat-form-field {
+  width: 90%;
+}
