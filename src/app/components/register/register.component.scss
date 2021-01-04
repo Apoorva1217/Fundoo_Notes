@@ -1,0 +1,21 @@
+@import "../../../style/style.scss";
+$size: 100%;
+
+.card {
+  width: $size;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fundoo{
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 55%;
+}
+
+.SignUp{
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 4%;
+}
