@@ -1,0 +1,26 @@
+@import "../../../style/style.scss";
+$size:80%;
+
+.login-form-field {
+  width: 100%;
+  padding-right: 1px;
+}
+
+.card {
+  width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fundoo{
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.SignIn{
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}

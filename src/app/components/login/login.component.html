@@ -1,0 +1,41 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="main">
+    <div fxLayout="row" fxLayoutGap="10">
+        <mat-card class="card">
+            <form (ngSubmit)="login()">
+                <div class="fundoo">
+                    <app-header></app-header><br><br>
+                    <div class="SignIn">Sign in</div>
+                </div><br>
+                <div>Login to your account</div>
+                <form>
+                    <div>
+                        <mat-form-field class="login-form-field" appearance="outline">
+                            <mat-label>UserName</mat-label>
+                            <input matInput type="text" [formControl]="Email" autocomplete="off" required>
+                            <mat-error *ngIf="Email.invalid">
+                                {{getEmailErrorMessage()}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="login-form-field" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="Password"
+                                autocomplete="off" required>
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
+                            </mat-icon>
+                            <mat-error *ngIf="Password.invalid">
+                                {{ getPasswordErrorMessage() }}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </form>
+                <div routerLink="/forgot" class="signin">Forgot password?</div><br>
+                <a routerLink="/register" class="signin">Sign up</a>
+                <span fxLayout="row" fxLayoutAlign="end">
+                    <button type="submit" mat-flat-button color="primary">Login</button>
+                </span>
+            </form>
+        </mat-card>
+    </div>
+</div>
